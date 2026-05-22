@@ -53,3 +53,48 @@ Justificacion: sin esa regla, dos implementaciones correctas podrian dar resulta
 | TC-08 | Regla 3 | Calcular precio final con descuento intermedio | Existe un producto valido | Precio base: 100000; descuento: 10 | Aplicar descuento y calcular precio final | El precio final es 107100.00 | Positivo |
 | TC-09 | Regla 3 | Calcular precio final con descuento de 0% | Existe un producto valido | Precio base: 100000; descuento: 0 | Aplicar descuento y calcular precio final | El precio final es 119000.00 | Borde |
 | TC-10 | Regla 3 | Calcular precio final con descuento de 40% | Existe un producto valido | Precio base: 100000; descuento: 40 | Aplicar descuento y calcular precio final | El precio final es 71400.00 y no es negativo | Borde |
+
+## Ejecucion de pruebas
+
+Instalar dependencias:
+
+```bash
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements-dev.txt
+```
+
+Ejecutar pruebas unitarias con cobertura:
+
+```bash
+.venv\Scripts\python -m pytest
+```
+
+Output de cobertura:
+
+```text
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-8.3.4, pluggy-1.6.0
+rootdir: C:\Users\sebas\Desktop\libreria-parcial-sebas
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.0.0
+collected 10 items
+
+tests\test_producto.py ..........                                        [100%]
+
+---------- coverage: platform win32, python 3.13.5-final-0 -----------
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+src\libreria\__init__.py       0      0   100%
+src\libreria\producto.py      42      0   100%
+--------------------------------------------------------
+TOTAL                         42      0   100%
+
+============================= 10 passed in 0.10s ==============================
+```
+
+Ejecutar escenarios BDD:
+
+```bash
+.venv\Scripts\python -m behave
+```
