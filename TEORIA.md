@@ -15,46 +15,23 @@ Respuesta correcta: B.
 ## Preguntas abiertas
 
 ### PA-1
-
-En TDD el paso Green busca pasar del rojo al verde con el cambio mas pequeno que pruebe la idea.  
-La razon no es escribir codigo malo por gusto, sino evitar resolver problemas que todavia no estan demostrados por una prueba.  
-Si el desarrollador intenta dejar todo limpio y completo desde el primer Green, puede mezclar implementacion, diseno y suposiciones no verificadas.  
-Eso debilita el ciclo porque ya no sabe si el codigo existe por una necesidad real o por una intuicion anticipada.  
-El orden correcto permite primero confirmar comportamiento y luego mejorar estructura en Refactor con la proteccion de los tests.  
-Asi el diseno aparece de forma incremental, no como una apuesta grande hecha al inicio.
+En TDD, el paso Green consiste en hacer el cambio más pequeño para que la prueba pase. No se trata de escribir mal código, sino de no adelantarse a problemas que todavía no están probados. Primero confirmo el comportamiento y después, en Refactor, mejoro el diseño con la seguridad de los tests.
 
 ### PA-2
 
-TDD ayuda principalmente al desarrollador a construir codigo guiado por pruebas pequenas y concretas.  
-Su problema central es tecnico: escribir solo el codigo necesario, detectar regresiones y mejorar el diseno con seguridad.  
-BDD se enfoca mas en alinear el comportamiento esperado con el lenguaje del negocio y con las personas que entienden la necesidad.  
-Por eso sus escenarios suelen expresar ejemplos de uso, reglas y resultados visibles para el usuario, no detalles internos.  
-No se reemplazan porque miran niveles distintos del mismo producto: TDD cuida unidades y diseno interno; BDD cuida entendimiento compartido.  
-Un equipo puede usar BDD para acordar que debe pasar y TDD para construir como hacerlo de manera segura.
+TDD ayuda a construir código con pruebas pequeñas y concretas, escribiendo solo lo necesario y mejorando el diseño con seguridad. BDD, en cambio, sirve para acordar el comportamiento esperado usando un lenguaje más cercano al negocio y al usuario. No se reemplazan: BDD define qué debe pasar y TDD ayuda a construir cómo hacerlo bien.
 
 ### PA-3
 
-Decir que 95% de cobertura significa que no hay bugs confunde ejecucion de lineas con calidad de las verificaciones.  
-La cobertura solo indica que las pruebas pasaron por gran parte del codigo, no que revisaron los resultados correctos.  
-Por ejemplo, una prueba puede ejecutar `calcular_precio_final()` con descuento del 10% y solo verificar que devuelve un numero.  
-Esa prueba subiria cobertura, pero no detectaria si el sistema aplica primero el IVA y despues el descuento, que cambia la regla del negocio.  
-Tambien pueden faltar casos limite, como descuento 0%, 40% o 41%, aunque el porcentaje de cobertura sea alto.  
-La cobertura es una senal util para encontrar zonas no probadas, pero no demuestra ausencia de defectos.
+Tener 95% de cobertura no significa que no haya bugs. La cobertura solo muestra que las pruebas ejecutaron mucho código, pero no que hayan verificado bien los resultados. Sirve para detectar zonas sin probar, pero no demuestra que el sistema esté correcto ni que cubra reglas de negocio o casos límite.
+
 
 ### PA-4
 
-Probar solo 20% es debil porque 20 esta en el centro de una particion valida y no tensiona los bordes de la regla.  
-Los errores suelen aparecer cerca de los limites, por ejemplo usar `< 40` en vez de `<= 40`, o aceptar `-1` por no validar el minimo.  
-Yo probaria 0 y 40 porque son valores validos en los extremos permitidos.  
-Tambien probaria -1 y 41 porque son los valores invalidos inmediatamente por fuera del rango.  
-Como valor representativo interno usaria 20 para confirmar que un caso normal funciona.  
-Asi se cubren particiones y limites, no solo un ejemplo conveniente.
+Probar solo el 20% es débil porque está en medio del rango y no revisa los límites. Yo probaría **0 y 40** como valores válidos extremos, y **-1 y 41** como inválidos fuera del rango. También usaría **20** como caso normal. Así no pruebo solo un ejemplo cómodo, sino particiones y bordes donde suelen aparecer errores.
+
 
 ### PA-5
 
-TDD y BDD producen una suite automatizada que puede ejecutarse muchas veces sin depender de revision manual.  
-Esa suite es una base practica para CI/CD porque cada push o merge puede validar si las reglas siguen funcionando.  
-TDD aporta pruebas pequenas y rapidas para detectar fallos tecnicos cerca del codigo que los causa.  
-BDD aporta escenarios entendibles que verifican reglas de negocio completas, como descuento e IVA.  
-Si el pipeline de CI/CD no tiene tests solidos, solo automatiza el movimiento del codigo, pero no da confianza real sobre su calidad.  
-En ese caso puede desplegar mas rapido, pero tambien puede propagar defectos mas rapido.
+TDD y BDD ayudan a tener una suite automatizada que se puede ejecutar en cada push o merge. TDD detecta fallos técnicos cerca del código, mientras BDD valida reglas de negocio completas. Para mí, CI/CD sin buenos tests solo mueve código más rápido, pero no garantiza calidad; incluso puede propagar errores más rápido.
+
