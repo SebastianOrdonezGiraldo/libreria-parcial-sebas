@@ -7,6 +7,7 @@ MENSAJE_DESCUENTO_INVALIDO = "El descuento debe estar entre 0% y 40%."
 DESCUENTO_MINIMO = Decimal("0")
 DESCUENTO_MAXIMO = Decimal("40")
 IVA = Decimal("0.19")
+UNO = Decimal("1")
 CIEN = Decimal("100")
 CENTAVO = Decimal("0.01")
 
@@ -28,10 +29,16 @@ class Producto:
         self.descuento = descuento
 
     def calcular_precio_final(self):
-        precio_con_descuento = self.precio_base * (Decimal("1") - self.descuento / CIEN)
-        precio_con_iva = precio_con_descuento * (Decimal("1") + IVA)
+        precio_con_descuento = self._calcular_precio_con_descuento()
+        precio_con_iva = self._aplicar_iva(precio_con_descuento)
         precio_final = max(precio_con_iva, Decimal("0"))
-        return precio_final.quantize(CENTAVO)
+        return _redondear_moneda(precio_final)
+
+    def _calcular_precio_con_descuento(self):
+        return self.precio_base * (UNO - self.descuento / CIEN)
+
+    def _aplicar_iva(self, precio):
+        return precio * (UNO + IVA)
 
 
 def _a_decimal(valor):
@@ -46,3 +53,7 @@ def _validar_precio_base(precio):
 def _validar_descuento(descuento):
     if descuento < DESCUENTO_MINIMO or descuento > DESCUENTO_MAXIMO:
         raise ValueError(MENSAJE_DESCUENTO_INVALIDO)
+
+
+def _redondear_moneda(valor):
+    return valor.quantize(CENTAVO)
