@@ -6,17 +6,11 @@
 
 Respuesta correcta: C.
 
-- A es incorrecta porque shift-left propone probar antes y durante el desarrollo, no esperar al final.
-- B es incorrecta porque shift-right se relaciona con aprender del sistema en produccion, no con dejar todo el diseno de pruebas para despues.
-- D es incorrecta porque integracion continua es una practica de automatizacion frecuente, no el enfoque de probar solo cuando el modulo ya esta terminado.
-
 ### SM-2
 
 Respuesta correcta: B.
 
-- A es incorrecta porque en TDD el refactor ocurre despues de tener una prueba verde, no antes de escribir tests.
-- C es incorrecta porque Green no es la regla violada primero; el problema nace al escribir produccion sin una prueba fallando.
-- D es incorrecta porque eso describe test-after, no TDD. En TDD el test debe guiar la necesidad del codigo.
+
 
 ## Preguntas abiertas
 
