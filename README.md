@@ -69,29 +69,9 @@ Ejecutar pruebas unitarias con cobertura:
 .venv\Scripts\python -m pytest
 ```
 
-Output de cobertura:
+Captura de cobertura:
 
-```text
-============================= test session starts =============================
-platform win32 -- Python 3.13.5, pytest-8.3.4, pluggy-1.6.0
-rootdir: C:\Users\sebas\Desktop\libreria-parcial-sebas
-configfile: pyproject.toml
-testpaths: tests
-plugins: cov-6.0.0
-collected 10 items
-
-tests\test_producto.py ..........                                        [100%]
-
----------- coverage: platform win32, python 3.13.5-final-0 -----------
-Name                       Stmts   Miss  Cover   Missing
---------------------------------------------------------
-src\libreria\__init__.py       0      0   100%
-src\libreria\producto.py      42      0   100%
---------------------------------------------------------
-TOTAL                         42      0   100%
-
-============================= 10 passed in 0.10s ==============================
-```
+![Captura de pytest con cobertura](evidencias/pytest-cobertura.png)
 
 Ejecutar escenarios BDD:
 
@@ -99,4 +79,8 @@ Ejecutar escenarios BDD:
 .venv\Scripts\python -m behave
 ```
 
-La evidencia resumida de las ejecuciones tambien queda en [EVIDENCIAS_TESTS.md](EVIDENCIAS_TESTS.md).
+Captura de escenarios BDD:
+
+![Captura de behave BDD](evidencias/behave-bdd.png)
+
+Las capturas tambien quedan organizadas en [EVIDENCIAS_TESTS.md](EVIDENCIAS_TESTS.md).
