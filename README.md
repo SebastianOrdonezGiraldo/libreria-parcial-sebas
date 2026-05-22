@@ -98,3 +98,5 @@ Ejecutar escenarios BDD:
 ```bash
 .venv\Scripts\python -m behave
 ```
+
+La evidencia resumida de las ejecuciones tambien queda en [EVIDENCIAS_TESTS.md](EVIDENCIAS_TESTS.md).
