@@ -4,6 +4,8 @@ from decimal import Decimal
 
 MENSAJE_PRECIO_INVALIDO = "El precio base debe ser mayor que cero."
 MENSAJE_DESCUENTO_INVALIDO = "El descuento debe estar entre 0% y 40%."
+DESCUENTO_MINIMO = Decimal("0")
+DESCUENTO_MAXIMO = Decimal("40")
 
 
 @dataclass
@@ -19,8 +21,7 @@ class Producto:
 
     def aplicar_descuento(self, descuento):
         descuento = _a_decimal(descuento)
-        if descuento < Decimal("0") or descuento > Decimal("40"):
-            raise ValueError(MENSAJE_DESCUENTO_INVALIDO)
+        _validar_descuento(descuento)
         self.descuento = descuento
 
 
@@ -31,3 +32,8 @@ def _a_decimal(valor):
 def _validar_precio_base(precio):
     if precio <= Decimal("0"):
         raise ValueError(MENSAJE_PRECIO_INVALIDO)
+
+
+def _validar_descuento(descuento):
+    if descuento < DESCUENTO_MINIMO or descuento > DESCUENTO_MAXIMO:
+        raise ValueError(MENSAJE_DESCUENTO_INVALIDO)
