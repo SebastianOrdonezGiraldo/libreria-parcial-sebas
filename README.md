@@ -38,3 +38,18 @@ La Regla 1 indica que un producto tiene nombre y precio base, pero la condicion 
 Pregunta: cuando el calculo produzca decimales, ¿el precio final debe redondearse a centavos, a pesos enteros o conservar todos los decimales?
 
 Justificacion: sin esa regla, dos implementaciones correctas podrian dar resultados distintos por manejo de moneda y redondeo.
+
+## Parte 2 - Casos de prueba
+
+| ID | Regla | Descripcion | Precondicion | Datos de entrada | Pasos | Resultado esperado | Tipo |
+|---|---|---|---|---|---|---|---|
+| TC-01 | Regla 1 | Crear un producto con precio base valido | No existe producto creado | Nombre: "Libro TDD"; precio base: 50000 | Crear el producto | El producto queda creado con nombre y precio base | Positivo |
+| TC-02 | Regla 1 | Rechazar precio base igual a cero | No existe producto creado | Nombre: "Cuaderno"; precio base: 0 | Intentar crear el producto | Se lanza un error con el mensaje "El precio base debe ser mayor que cero." | Borde |
+| TC-03 | Regla 1 | Rechazar precio base negativo | No existe producto creado | Nombre: "Agenda"; precio base: -1000 | Intentar crear el producto | Se lanza un error con el mensaje "El precio base debe ser mayor que cero." | Negativo |
+| TC-04 | Regla 2 | Aceptar descuento minimo permitido | Existe un producto valido | Descuento: 0 | Aplicar descuento | El descuento se guarda como 0% | Borde |
+| TC-05 | Regla 2 | Aceptar descuento maximo permitido | Existe un producto valido | Descuento: 40 | Aplicar descuento | El descuento se guarda como 40% | Borde |
+| TC-06 | Regla 2 | Rechazar descuento mayor al maximo | Existe un producto valido | Descuento: 41 | Intentar aplicar descuento | Se lanza un error con el mensaje "El descuento debe estar entre 0% y 40%." | Negativo |
+| TC-07 | Regla 2 | Rechazar descuento negativo | Existe un producto valido | Descuento: -1 | Intentar aplicar descuento | Se lanza un error con el mensaje "El descuento debe estar entre 0% y 40%." | Negativo |
+| TC-08 | Regla 3 | Calcular precio final con descuento intermedio | Existe un producto valido | Precio base: 100000; descuento: 10 | Aplicar descuento y calcular precio final | El precio final es 107100.00 | Positivo |
+| TC-09 | Regla 3 | Calcular precio final con descuento de 0% | Existe un producto valido | Precio base: 100000; descuento: 0 | Aplicar descuento y calcular precio final | El precio final es 119000.00 | Borde |
+| TC-10 | Regla 3 | Calcular precio final con descuento de 40% | Existe un producto valido | Precio base: 100000; descuento: 40 | Aplicar descuento y calcular precio final | El precio final es 71400.00 y no es negativo | Borde |
